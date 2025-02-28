@@ -80,8 +80,9 @@ function enc_report() {
   });
   for (let i = 1; i < len; i++) {
     // would actually need to calculate the time difference?
-    const timeDiff = enc_aggregate.all[i].time - enc_aggregate.all[i-1].time;
-    const bitrate = (enc_aggregate.all[i].byteLength * 8) / timeDiff;
+    // time unites?
+    const timeDiff = enc_aggregate.all[i].time - enc_aggregate.all[i-1].time; // ms
+    const bitrate = ((enc_aggregate.all[i].byteLength * 8) / timeDiff) * 1000;
     enc_bitrate.all.push([enc_aggregate.all[i].time, bitrate]);
   }
   //self.postMessage({text: 'Encode Time Data dump: ' + JSON.stringify(enc_time.all)});
