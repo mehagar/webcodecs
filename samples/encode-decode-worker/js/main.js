@@ -2,12 +2,12 @@
 
 let videoSource;
 let preferredResolution;
-let mediaStream, bitrate = 300000;
+let mediaStream, bitrate = 1500000;
 let stopped = false;
 let preferredCodec ="H264";
-let mode = "L1T1";
-let latencyPref = "realtime", bitPref = "variable";
-let encHw = "no-preference", decHw = "no-preference";
+let mode = "L1T2";
+let latencyPref = "realtime", bitPref = "constant";
+let encHw = "no-preference", decHw = "prefer-hardware";
 let streamWorker;
 let inputStream, outputStream;
 let metrics = {
