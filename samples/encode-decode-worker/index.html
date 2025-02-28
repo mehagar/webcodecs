@@ -66,7 +66,7 @@
 <div id="rateInput">
   <label for="rate">bitrate: </label>
   <input type="text" name="rate" id="rate"
-      value=300000>
+      value=1500000>
 </div>
 
 <div id="keyInput">
@@ -78,7 +78,7 @@
 <div id="frameInput">
   <label for="framer">framerate: </label>
   <input type="text" name="framer" id="framer" minlength=2 maxlength=3 size=3
-      value=30>
+      value=24>
 </div>
 
 <div id="codecButtons">
@@ -107,11 +107,11 @@
 
 <div id="decHwButtons">
 <p>Decoder Hardware Acceleration Preference:</p>
-   <input type="radio" id="decHw" name="decHwAccel" value="prefer-hardware" onchange="getDecHwValue(this)">
+   <input type="radio" id="decHw" name="decHwAccel" value="prefer-hardware" checked="checked" onchange="getDecHwValue(this)">
    <label for="decHw">Prefer Hardware</label><br>
    <input type="radio" id="decSw"  name="decHwAccel" value="prefer-software" onchange="getDecHwValue(this)">
    <label for="decSw">Prefer Software</label><br>
-   <input type="radio" id="decNo-pref"  name="decHwAccel" value="no-preference" checked="checked" onchange="getDecHwValue(this)">
+   <input type="radio" id="decNo-pref"  name="decHwAccel" value="no-preference" onchange="getDecHwValue(this)">
    <label for="decNo-pref">No Preference</label><br>
 </div>
 
@@ -125,18 +125,18 @@
 
 <div id="bitButtons">
 <p>Bitrate mode:</p>
-   <input type="radio" id="constant"  name="bitPref" value="constant" onchange="getBitPrefValue(this)">
+   <input type="radio" id="constant"  name="bitPref" value="constant" checked="checked" onchange="getBitPrefValue(this)">
    <label for="constant">constant</label><br>
-   <input type="radio" id="variable" name="bitPref" value="variable" checked="checked" onchange="getBitPrefValue(this)">
+   <input type="radio" id="variable" name="bitPref" value="variable" onchange="getBitPrefValue(this)">
    <label for="variable">variable</label><br>
 </div>
 
 
 <div id="modeButtons">
 <p>Scalability Mode:</p>
-   <input type="radio" id="L1T1" name="mode" value="L1T1" checked="checked" onchange="getModeValue(this)">
+   <input type="radio" id="L1T1" name="mode" value="L1T1" onchange="getModeValue(this)">
    <label for="L1T1">L1T1</label><br>
-   <input type="radio" id="L1T2"  name="mode" value="L1T2" onchange="getModeValue(this)">
+   <input type="radio" id="L1T2"  name="mode" value="L1T2" checked="checked" onchange="getModeValue(this)">
    <label for="L1T2">L1T2</label><br>
    <input type="radio" id="L1T3"  name="mode" value="L1T3" onchange="getModeValue(this)">
    <label for="L1T3">L1T3</label><br>
@@ -144,11 +144,11 @@
 
 <div id="resButtons">
 <p>Resolution:</p>
-   <input type="radio" id="qvga" name="resolution" value="qvga" checked="checked" onchange="getResValue(this)">
+   <input type="radio" id="qvga" name="resolution" value="qvga" onchange="getResValue(this)">
    <label for="qvga">QVGA</label><br>
    <input type="radio" id="vga" name="resolution" value="vga" onchange="getResValue(this)">
    <label for="vga">VGA</label><br>
-   <input type="radio" id="hd" name="resolution" value="hd" onchange="getResValue(this)">
+   <input type="radio" id="hd" name="resolution" value="hd" checked="checked" onchange="getResValue(this)">
    <label for="hd">HD</label><br>
    <input type="radio" id="full-hd" name="resolution" value="full-hd" onchange="getResValue(this)">
    <label for="full-hd">Full HD</label><br>

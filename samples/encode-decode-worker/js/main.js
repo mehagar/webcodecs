@@ -1,5 +1,6 @@
 'use strict';
 
+let videoSource;
 let preferredResolution;
 let mediaStream, bitrate = 300000;
 let stopped = false;
