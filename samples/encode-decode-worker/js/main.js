@@ -32,11 +32,13 @@ const encHwButtons = document.querySelector('#encHwButtons');
 const chart2_div = document.getElementById('chart2_div');
 const chart3_div = document.getElementById('chart3_div');
 const chart4_div = document.getElementById('chart4_div');
+const chart5_div = document.getElementById('chart5_div');
 const videoSelect = document.querySelector('select#videoSource');
 const selectors = [videoSelect];
 chart2_div.style.display = "none";
 chart3_div.style.display = "none";
 chart4_div.style.display = "none";
+chart5_div.style.display = "none";
 connectButton.disabled = false;
 stopButton.disabled = true;
 
@@ -204,6 +206,7 @@ function stop() {
   chart2_div.style.display = "initial";
   chart3_div.style.display = "initial";
   chart4_div.style.display = "initial";
+  chart5_div.style.display = "initial";
   streamWorker.postMessage({ type: "stop" });
   try {
     inputStream.cancel();

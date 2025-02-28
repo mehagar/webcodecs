@@ -13,6 +13,10 @@ let enc_time = {
   sum: 0
 };
 
+let enc_bitrate = {
+  all: []
+}
+
 let dec_aggregate = {
   all: [],
 };
@@ -70,6 +74,10 @@ function enc_report() {
     }
   }
   const avg = enc_time.sum / enc_time.all.length;
+  // calculate using enc_aggregate.all.sum(chunk.byteLength)
+  for (let i = 0; i < len; i++) {
+    enc_bitrate.all.push([time, enc_aggregate.all[i].byteLength]);
+  }
   //self.postMessage({text: 'Encode Time Data dump: ' + JSON.stringify(enc_time.all)});
   return {
      count: enc_time.all.length,
@@ -270,7 +278,7 @@ class pipeline {
              }
              if (chunk.type != 'config'){
               const after = performance.now();
-              enc_update({output: 1, timestamp: chunk.timestamp, time: after});
+              enc_update({output: 1, timestamp: chunk.timestamp, time: after, byteLength: chunk.byteLength });
              }
              chunk.temporalLayerId = 0;
              if (cfg.svc) {
@@ -340,6 +348,7 @@ class pipeline {
        const decqueue_stats = decqueue_report();
        self.postMessage({severity: 'chart', x: 'Frame Number', y: 'Glass-Glass Latency', label: 'Glass-Glass Latency (ms) by Frame Number', div: 'chart2_div', text: ''});
        self.postMessage({severity: 'chart', x: 'Timestamp', y: 'Encoding Time', label: 'Encoding Time (ms) by Timestamp', div: 'chart3_div', text: JSON.stringify(enc_time.all)});
+       self.postMessage({severity: 'chart', x: 'Timestamp', y: 'Encoding Bitrate', label: 'Encoding Bitrate (bytes)', div: 'chart5_div', text: JSON.stringify(enc_bitrate.all)});
        self.postMessage({severity: 'chart', x: 'Timestamp', y: 'Decoding Time', label: 'Decoding Time (ms) by Timestamp', div: 'chart4_div', text: JSON.stringify(dec_time.all)});
        self.postMessage({text: 'Encoder Time report: ' + JSON.stringify(enc_stats)});
        self.postMessage({text: 'Encoder Queue report: ' + JSON.stringify(encqueue_stats)});
