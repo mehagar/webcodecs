@@ -394,8 +394,8 @@ document.addEventListener('DOMContentLoaded', async function(event) {
 
       switch(preferredCodec){
         case "H264":
-          config.codec = "avc1.42002A";  // baseline profile, level 4.2
-          /* config.codec = "avc1.640028"; */
+          //config.codec = "avc1.42002A";  // baseline profile, level 4.2
+          config.codec = "avc1.640028";
           config.avc = { format: "annexb" };
           config.pt = 1;
           break;
