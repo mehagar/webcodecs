@@ -375,7 +375,6 @@ document.addEventListener('DOMContentLoaded', async function(event) {
       const framerat = Math.min(framer, ts.frameRate/vConfig.framerateScale) ;
 
       const config = {
-        alpha: "discard",
         latencyMode: latencyPref,
         bitrateMode: bitPref,
         codec: preferredCodec,
