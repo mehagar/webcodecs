@@ -82,7 +82,7 @@ function enc_report() {
     // would actually need to calculate the time difference?
     // time unites?
     const timeDiff = enc_aggregate.all[i].time - enc_aggregate.all[i-1].time; // ms
-    const bitrate = ((enc_aggregate.all[i].byteLength * 8) / timeDiff) * 1000;
+    const bitrate = ((enc_aggregate.all[i].byteLength * 8) / timeDiff); // in kbps
     enc_bitrate.all.push([enc_aggregate.all[i].time, bitrate]);
   }
   //self.postMessage({text: 'Encode Time Data dump: ' + JSON.stringify(enc_time.all)});
@@ -355,7 +355,7 @@ class pipeline {
        const decqueue_stats = decqueue_report();
        self.postMessage({severity: 'chart', x: 'Frame Number', y: 'Glass-Glass Latency', label: 'Glass-Glass Latency (ms) by Frame Number', div: 'chart2_div', text: ''});
        self.postMessage({severity: 'chart', x: 'Timestamp', y: 'Encoding Time', label: 'Encoding Time (ms) by Timestamp', div: 'chart3_div', text: JSON.stringify(enc_time.all)});
-       self.postMessage({severity: 'chart', x: 'Timestamp', y: 'Encoding Bitrate', label: 'Encoding Bitrate (bps)', div: 'chart5_div', text: JSON.stringify(enc_bitrate.all)});
+       self.postMessage({severity: 'chart', x: 'Timestamp', y: 'Encoding Bitrate', label: 'Encoding Bitrate (kbps)', div: 'chart5_div', text: JSON.stringify(enc_bitrate.all)});
        self.postMessage({severity: 'chart', x: 'Timestamp', y: 'Decoding Time', label: 'Decoding Time (ms) by Timestamp', div: 'chart4_div', text: JSON.stringify(dec_time.all)});
        self.postMessage({text: 'Encoder Time report: ' + JSON.stringify(enc_stats)});
        self.postMessage({text: 'Encoder Queue report: ' + JSON.stringify(encqueue_stats)});
